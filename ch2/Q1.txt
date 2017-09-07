@@ -1,0 +1,15 @@
+The String class provides methods that you can apply to String objects. One of them is the length method. The length method counts the number of characters in a string. For example, the sequence of statements
+
+String greeting = "Hello, World!";
+int n = greeting.length();
+
+sets n to the number of characters in the string object "Hello, World!" (13).
+
+Let¡¯s look at another method of the String class. When you apply the toUpperCase method to a String object, the method creates another String object that contains the characters of the original string, with lowercase letters converted to uppercase. For example, the sequence of statements
+
+String river = "Mississippi";
+String bigRiver = river.toUpperCase();
+
+sets bigRiver to the String object "MISSISSIPPI". Similarly, applying the toLowerCase method to a String object creates another String object that contains the characters of the original string, with uppercase letters converted to lowercase.
+
+Write a program that constructs a String object with the value "This is a Test" and then creates a new String object with the same message as the original string, but with every character converted to lowercase. Then, print the new string.
