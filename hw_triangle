@@ -1,0 +1,88 @@
+public class Triangle
+{
+   private double x1,y1,x2,y2,x3,y3;
+   
+    public Triangle(double x1,double y1, double x2, double y2, double x3, double y3)
+    {
+        this.x1 = x1;
+        this.y1 = y1;
+        this.x2 = x2;
+        this.y2 = y2;
+        this.x3 = x3;
+        this.y3 = y3;
+    }
+
+    public double getSide1Length()
+    {
+        return Math.sqrt(Math.pow((x1 - x2),2) + Math.pow((y1 - y2),2));
+    }
+    public double getSide2Length()
+    {
+        return Math.sqrt(Math.pow((x1 - x3),2) + Math.pow((y1 - y3),2));
+    }
+    public double getSide3Length()
+    {
+        return Math.sqrt(Math.pow((x2 - x3),2) + Math.pow((y2 - y3),2));
+    }
+    public double getAngle1()
+    {
+        double a = getSide3Length();
+        double b = getSide1Length();
+        double c = getSide2Length();
+        return Math.acos(((b*b) + (c*c) - (a*a))/(2*b*c));
+    }
+    public double getAngle2()
+    {
+        double a = getSide3Length();
+        double b = getSide1Length();
+        double c = getSide2Length();
+        return Math.acos(((b*b) + (a*a) - (c*c))/(2*b*a));
+    }    
+    public double getAngle3()
+    {
+        double a = getSide3Length();
+        double b = getSide1Length();
+        double c = getSide2Length();
+        return Math.acos(((a*a) + (c*c) - (b*b))/(2*a*c));
+    }  
+    public double getPerimeter()
+    {
+        return getSide1Length() + getSide2Length() + getSide3Length();
+    }
+    public double getArea()
+    {
+        double s = getPerimeter()/2.0;
+        double a = getSide1Length();
+        double b = getSide2Length();
+        double c = getSide3Length();
+        return Math.sqrt(s * (s-a) * (s-b) * (s-c));
+    }
+}
+
+
+import java.util.Scanner;
+public class TriangleRunner
+{
+  public static void main(String[] args)
+  {
+     Scanner scan = new Scanner(System.in);
+     System.out.println("Enter the x,y coordinates of three points in this order x1,y1,x2,y2,x3,y3:  ");
+     double x1 = scan.nextDouble();
+     double y1 = scan.nextDouble();
+     double x2 = scan.nextDouble();
+     double y2 = scan.nextDouble();
+     double x3 = scan.nextDouble();
+     double y3 = scan.nextDouble();   
+     Triangle triangle = new Triangle(x1,y1,x2,y2,x3,y3);
+     System.out.println("Side 1 length:  " + triangle.getSide1Length());
+     System.out.println("Side 2 length:  " + triangle.getSide2Length());   
+     System.out.println("Side 3 length:  " + triangle.getSide3Length());
+     System.out.println("Angle 1:  " + triangle.getAngle1());
+     System.out.println("Angle 2:  " + triangle.getAngle1());
+     System.out.println("Angle 3:  " + triangle.getAngle1());
+     System.out.println("The perimeter of the triangle is " + triangle.getPerimeter());
+     System.out.println("The area of the triangle is " + triangle.getArea());
+  }
+}
+
+
