@@ -1,0 +1,93 @@
+  1  /**
+  2     A 3 x 3 tic-tac-toe board.
+  3  */
+  4  public class TicTacToe
+  5  {
+  6     private String[][] board;
+  7     private static final int ROWS = 3;
+  8     private static final int COLUMNS = 3;
+  9  
+ 10     /**
+ 11        Constructs an empty board.
+ 12     */
+ 13     public TicTacToe()
+ 14     {
+ 15        board = new String[ROWS][COLUMNS];
+ 16        // Fill with spaces
+ 17        for (int i = 0; i < ROWS; i++)
+ 18           for (int j = 0; j < COLUMNS; j++)
+ 19              board[i][j] = " ";
+ 20     }
+ 21 
+22     /**
+ 23        Sets a field in the board. The field must be unoccupied.
+ 24        @param i the row index 
+ 25        @param j the column index 
+ 26        @param player the player ("x" or "o")
+ 27     */
+ 28     public void set(int i, int j, String player)
+ 29     {
+ 30        if (board[i][j].equals(" "))
+ 31           board[i][j] = player;
+ 32     }
+ 33 
+35        Creates a string representation of the board, such as
+ 36        |x  o|
+ 37        |  x |
+ 38        |   o|
+ 39        @return the string representation
+ 40     */
+ 41     public String toString()
+ 42     {
+ 43        String r = "";
+ 44        for (int i = 0; i < ROWS; i++)
+ 45        {
+ 46           r = r + "|";
+ 47           for (int j = 0; j < COLUMNS; j++)         
+ 48              r = r + board[i][j];
+ 49           r = r + "|\n";
+ 50        }
+ 51        return r;
+ 52     }
+ 53  }
+
+TicTacToeRunner.java
+
+1  import java.util.Scanner;
+  2  
+  3  /**
+  4     This program runs a TicTacToe game. It prompts the
+  5     user to set positions on the board and prints out the
+  6     result.
+  7  */
+  8  public class TicTacToeRunner
+  9  {
+ 10     public static void main(String[] args)
+ 11     {
+ 12        Scanner in = new Scanner(System.in);
+ 13        String player = "x";
+ 14        TicTacToe game = new TicTacToe();
+15        boolean done = false;
+ 16        while (!done)
+ 17        {
+ 18           System.out.print(game.toString()); 
+ 19           System.out.print(
+ 20                 "Row for " + player + " (-1 to exit): ");
+ 21           int row = in.nextInt();
+ 22           if (row < 0) done = true;
+ 23           else
+ 24           {
+ 25              System.out.print("Column for " + player + ": ");
+ 26              int column = in.nextInt();
+ 27              game.set(row, column, player);
+ 28              if (player.equals("x")) 
+ 29                 player = "o"; 
+ 30              else 
+ 31                 player = "x";    
+ 32           }
+ 33        }
+ 34     }
+ 35  }
+
+
+
